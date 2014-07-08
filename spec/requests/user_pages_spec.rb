@@ -28,7 +28,6 @@ describe "User pages" do
       end
     end
   
-
     describe "delete links" do
 
       it { should_not have_link('delete') }
@@ -160,7 +159,6 @@ describe "User pages" do
     end
   end
 
-
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
@@ -180,7 +178,6 @@ describe "User pages" do
       it { should have_content('error') }
     end
 
-
     describe "with valid information" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
@@ -199,6 +196,7 @@ describe "User pages" do
       specify { expect(user.reload.email).to eq new_email }
     end
   end
+  
 
   describe "following/followers" do
     let(:user) { FactoryGirl.create(:user) }

@@ -10,7 +10,6 @@ describe Relationship do
 
   it { should be_valid }
 
-
   describe "follower methods" do
     it { should respond_to(:follower) }
     it { should respond_to(:followed) }
