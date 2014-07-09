@@ -13,8 +13,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }, :on => :create
+  validates :password, length: { minimum: 6 }, if: :password_required?
   before_create { generate_token(:auth_token) }
+
+  def password_required?
+    new_record? || password.present?
+  end
 
   def send_password_reset
     generate_token(:password_reset_token)
